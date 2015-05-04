@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
     name='querylogger',
@@ -7,6 +7,7 @@ setup(
     version='0.1.0',
     description="Utility for logging queries while running on `DEBUG = False`",
     license='BSD License',
+    packages=find_packages(),
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
