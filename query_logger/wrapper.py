@@ -11,7 +11,6 @@ class CursorLoggingWrapper(CursorWrapper):
     def execute(self, sql, params=None):
         executor = self.cursor.execute
         self.db.validate_no_broken_transaction()
-        self.db.set_dirty()
         with self.db.wrap_database_errors:
             if params is None:
                 return self.run_sql(executor, sql)
@@ -20,12 +19,12 @@ class CursorLoggingWrapper(CursorWrapper):
     def executemany(self, sql, param_list):
         executor = self.cursor.executemany
         self.db.validate_no_broken_transaction()
-        self.db.set_dirty()
         with self.db.wrap_database_errors:
             return self.run_sql(executor, sql, param_list)
 
     def run_sql(self, executor, sql, params=None):
         start = time.time()
         cursor = executor(sql) if not params else executor(sql, params)
-        logger.debug({"query": sql, "time": time.time() - start})
+        logger.info("[QUERY]: %s - params %s" % (sql, str(params)))
+        logger.info("[TIME]: %s" % (end - start))
         return cursor
