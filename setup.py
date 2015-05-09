@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='querylogger',
+    name='query_logger',
     author="Mattia Procopio",
     author_email="promat85@gmail.com",
     version='0.1.0',
