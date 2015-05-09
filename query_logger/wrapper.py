@@ -27,5 +27,5 @@ class CursorLoggingWrapper(CursorWrapper):
         cursor = executor(sql) if not params else executor(sql, params)
         end = time.time()
         logger.info("[QUERY]: %s - params %s" % (sql, str(params)))
-        logger.info("[TIME]: %s" % (end - start))
+        logger.info("[TIME]: %.6f" % (end - start))
         return cursor
