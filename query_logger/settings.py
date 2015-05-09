@@ -24,9 +24,9 @@ QUERY_LOGGING = {
         }
     },
     'loggers': {
-        'wrapper': {
-            'handlers': 'console_wrapper',
-            'level': 'INFO',
+        'query_logger.wrapper': {
+            'handlers': ['console_wrapper'],
+            'level': 'DEBUG',
             'propagate': True
         }
     }
